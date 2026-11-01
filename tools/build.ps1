@@ -39,7 +39,7 @@ if ($Target -eq 'setup') {
     $iscc = "$env:LOCALAPPDATA\Programs\Inno Setup 6\ISCC.exe", 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe' |
         Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
     if (-not $iscc) { throw 'Inno Setup 6 not found' }
-    & $iscc /Q installer\SnowDesk.iss
+    & $iscc /Q tools\SnowDesk.iss
     Check 'ISCC'
     # The repository carries the latest setup too, so a plain download of it includes the installer.
     Get-ChildItem build\setup\*.exe | Sort-Object LastWriteTime | Select-Object -Last 1 | Copy-Item -Destination SnowDesk-Setup.exe

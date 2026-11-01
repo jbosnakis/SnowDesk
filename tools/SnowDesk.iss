@@ -1,5 +1,5 @@
 ; The Windows setup for SnowDesk. Build the release exe first, then compile this file with Inno Setup 6:
-;   ISCC installer\SnowDesk.iss
+;   ISCC tools\SnowDesk.iss
 ; Output: build\setup\SnowDesk-Setup-<version>.exe
 #define Exe "..\build\SnowDesk.exe"
 #define Version GetStringFileInfo(Exe, "FileVersion")
