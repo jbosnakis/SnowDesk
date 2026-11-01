@@ -23,6 +23,10 @@ file with no dependencies. `build.bat dev` builds `build\dev\SnowDesk.exe` with 
 the release build does not contain; the tools use the dev build. `build.bat noauto` builds `build\noauto\SnowDesk.exe`
 without the Start with Windows option.
 
+For the setup, build the release exe, then run `ISCC installer\SnowDesk.iss` (Inno Setup 6). Output:
+`build\setup\SnowDesk-Setup-<version>.exe`. It installs for the current user with no administrator rights, closes a
+running copy first, and its uninstaller keeps `%APPDATA%\SnowDesk\settings.ini`.
+
 ## Security
 
 The app has no network access, no installer and needs no administrator rights. The release build uses Control Flow
