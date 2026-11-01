@@ -18,14 +18,14 @@ for pause, clearing the snow and exit. Everything in the panel applies at once a
 
 ## Build
 
-`build.bat` (Visual Studio 2022 with C++ tools and the Windows 10/11 SDK). Output: `build\SnowDesk.exe`, a single
-file with no dependencies. `build.bat dev` builds `build\dev\SnowDesk.exe` with the developer switches below, which
-the release build does not contain; the tools use the dev build. `build.bat noauto` builds `build\noauto\SnowDesk.exe`
-without the Start with Windows option.
+`tools\build.ps1` (Visual Studio 2022 with C++ tools, the Windows 10/11 SDK and Inno Setup 6). Output:
+`build\SnowDesk.exe`, a single file with no dependencies, and `build\setup\SnowDesk-Setup-<version>.exe`, the setup
+wizard. The setup installs for the current user with no administrator rights, closes a running copy first, and its
+uninstaller keeps `%APPDATA%\SnowDesk\settings.ini`.
 
-For the setup, build the release exe, then run `ISCC installer\SnowDesk.iss` (Inno Setup 6). Output:
-`build\setup\SnowDesk-Setup-<version>.exe`. It installs for the current user with no administrator rights, closes a
-running copy first, and its uninstaller keeps `%APPDATA%\SnowDesk\settings.ini`.
+`tools\build.ps1 release` builds only the exe. `tools\build.ps1 dev` builds `build\dev\SnowDesk.exe` with the developer
+switches below, which the release build does not contain; the tools use the dev build. `tools\build.ps1 noauto` builds
+`build\noauto\SnowDesk.exe` without the Start with Windows option.
 
 ## Security
 
