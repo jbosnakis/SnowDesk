@@ -1,8 +1,9 @@
 # SnowDesk
 
 **[Download SnowDesk-Setup-1.1.2.exe](https://github.com/jbosnakis/SnowDesk/releases/latest/download/SnowDesk-Setup-1.1.2.exe)**
-for Windows 10 and 11. Run it and follow the wizard: no administrator rights needed. Older versions are under
-[Releases](https://github.com/jbosnakis/SnowDesk/releases).
+for Windows 10 and 11. Run it and follow the wizard: no administrator rights needed. The same setup is
+[`SnowDesk-Setup.exe`](SnowDesk-Setup.exe) in this repository, so it also comes with a clone or a ZIP download. Older
+versions are under [Releases](https://github.com/jbosnakis/SnowDesk/releases).
 
 Snow for the Windows desktop. It falls behind your windows and keeps piling up there, settles on the real
 shapes of desktop icons, on the taskbar and on the top edges of windows, and reacts to the mouse and to anything
@@ -24,7 +25,7 @@ for pause, clearing the snow and exit. Everything in the panel applies at once a
 
 `tools\build.ps1` (Visual Studio 2022 with C++ tools, the Windows 10/11 SDK and Inno Setup 6). Output:
 `build\SnowDesk.exe`, a single file with no dependencies, and `build\setup\SnowDesk-Setup-<version>.exe`, the setup
-wizard. The setup installs for the current user with no administrator rights, closes a running copy first, and its
+wizard, also copied to `SnowDesk-Setup.exe` at the top of the repository. The setup installs for the current user with no administrator rights, closes a running copy first, and its
 uninstaller keeps `%APPDATA%\SnowDesk\settings.ini`.
 
 `tools\build.ps1 release` builds only the exe. `tools\build.ps1 dev` builds `build\dev\SnowDesk.exe` with the developer

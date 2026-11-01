@@ -1,5 +1,5 @@
 # Builds SnowDesk with Visual Studio 2022. A running copy locks the exe: run stop.ps1 first.
-# build.ps1          the release exe and the setup: build\SnowDesk.exe, build\setup\SnowDesk-Setup-<version>.exe
+# build.ps1          the release exe and the setup: build\SnowDesk.exe, build\setup\SnowDesk-Setup-<version>.exe, SnowDesk-Setup.exe
 # build.ps1 release  the release exe only
 # build.ps1 dev      with the developer switches, for the tools: build\dev\SnowDesk.exe
 # build.ps1 noauto   without the Start with Windows option, for scanner tests: build\noauto\SnowDesk.exe
@@ -41,4 +41,6 @@ if ($Target -eq 'setup') {
     if (-not $iscc) { throw 'Inno Setup 6 not found' }
     & $iscc /Q installer\SnowDesk.iss
     Check 'ISCC'
+    # The repository carries the latest setup too, so a plain download of it includes the installer.
+    Get-ChildItem build\setup\*.exe | Sort-Object LastWriteTime | Select-Object -Last 1 | Copy-Item -Destination SnowDesk-Setup.exe
 }
