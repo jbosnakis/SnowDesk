@@ -1,5 +1,9 @@
 # SnowDesk
 
+**[Download SnowDesk-Setup-1.1.2.exe](https://github.com/jbosnakis/SnowDesk/releases/latest/download/SnowDesk-Setup-1.1.2.exe)**
+for Windows 10 and 11. Run it and follow the wizard: no administrator rights needed. Older versions are under
+[Releases](https://github.com/jbosnakis/SnowDesk/releases).
+
 Snow for the Windows desktop. It falls behind your windows and keeps piling up there, settles on the real
 shapes of desktop icons, on the taskbar and on the top edges of windows, and reacts to the mouse and to anything
 you move. Winds change sides and grow stronger at night, the sun thaws patches during the day, and children
@@ -12,7 +16,7 @@ coldest patches, and those spread into a blanket over about half an hour. Settli
 
 Low CPU mode in the panel runs only soft, steady flakes, with no snow settling, wind, children or mouse effects.
 
-Run `build\SnowDesk.exe`. It lives in the notification area: click the snowflake for the settings panel, right-click
+SnowDesk lives in the notification area: click the snowflake for the settings panel, right-click
 for pause, clearing the snow and exit. Everything in the panel applies at once and is saved to
 `%APPDATA%\SnowDesk\settings.ini`.
 
