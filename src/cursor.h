@@ -8,6 +8,7 @@ struct SnowCursor {
     static constexpr int S = 96, M = 16;    // canvas size and the margin around the pointer image
 
     bool visible = false;
+    bool overWindow = false;    // over a window while snow stays behind windows: no flakes reach it there
     float x = 0, y = 0, vx = 0, vy = 0;
     float idle = 0;
     int hotX = 0, hotY = 0;

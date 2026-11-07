@@ -691,7 +691,7 @@ void World::spawnFlake(bool prewarm) {
 
 void World::stepParticles(float dt, const SnowParams& params, const Weather& weather, SnowCursor* cursor) {
     float cursorSpeed = cursor && cursor->visible ? cursor->speed() : 0;
-    bool cursorCollects = cursor && cursor->visible && cursor->idle > params.accumulateAfter;
+    bool cursorCollects = cursor && cursor->visible && !cursor->overWindow && cursor->idle > params.accumulateAfter;
     uint32_t cursorRng = rnd() | 1;
     float gust = weather.gustStrength();
 
@@ -756,7 +756,7 @@ void World::stepParticles(float dt, const SnowParams& params, const Weather& wea
             }
             if (ny >= ph) { dead = true; break; }
 
-            bool canTouchCursor = !p.grain && p.noHit <= 0 && (!p.behind || p.aimed);
+            bool canTouchCursor = !p.grain && p.noHit <= 0 && (!p.behind || p.aimed) && !(cursor && cursor->overWindow);
             if (canTouchCursor && cursor && cursor->visible && cursor->hit(nx, ny)) {
                 if (cursorCollects) {
                     cursor->drop(int(nx - cursor->originX()), cursorRng);
@@ -921,7 +921,7 @@ void World::step(float dt, const SnowParams& params, const Weather& weather, Sno
         return;
     }
 
-    if (cursor && cursor->visible && cursor->idle > params.accumulateAfter * 0.7f) {
+    if (cursor && cursor->visible && !cursor->overWindow && cursor->idle > params.accumulateAfter * 0.7f) {
         aimTimer -= dt;
         if (aimTimer <= 0) {
             aimTimer = rndf(0.35f, 0.8f);

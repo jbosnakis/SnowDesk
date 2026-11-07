@@ -1,6 +1,6 @@
 # SnowDesk
 
-**[Download SnowDesk-Setup-1.1.2.exe](https://github.com/jbosnakis/SnowDesk/releases/latest/download/SnowDesk-Setup-1.1.2.exe)**
+**[Download SnowDesk-Setup-1.1.3.exe](https://github.com/jbosnakis/SnowDesk/releases/latest/download/SnowDesk-Setup-1.1.3.exe)**
 for Windows 10 and 11. Run it and follow the wizard: no administrator rights needed. The same setup is
 [`SnowDesk-Setup.exe`](SnowDesk-Setup.exe) in this repository, so it also comes with a clone or a ZIP download. Older
 versions are under [Releases](https://github.com/jbosnakis/SnowDesk/releases).

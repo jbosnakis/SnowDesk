@@ -166,7 +166,14 @@ PointerStep trackPointer(App& app, float dt, double now) {
     if (moved && c.visible && app.settings.mousePush) screen.world.plow(fromX, fromY, c.x, c.y, vx, vy);
     if (moved && c.snowCount > 0) shakeOffSnow(c, screen.world, uint32_t(now * 977));
     if (moved) c.resetFrost();
-    if (c.visible && app.settings.cursorSnow && app.settings.settle) c.growFrost(dt);
+    c.overWindow = !app.settings.flakesInFront && screen.world.windowAt(c.x, c.y);
+    if (c.overWindow) {
+        // A window opened under a still pointer: its snow goes, and none gathers while it stays there.
+        if (c.snowCount > 0) c.clear();
+        c.resetFrost();
+    } else if (c.visible && app.settings.cursorSnow && app.settings.settle) {
+        c.growFrost(dt);
+    }
     c.ease(dt);
 
     followIconPress(app, screen, pressed);

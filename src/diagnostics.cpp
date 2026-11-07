@@ -119,10 +119,10 @@ void logStats(App& app, double t, int frames, double workSeconds) {
     const Screen& s = *app.screens[0];
     const World& w = s.world;
     logIconCoverage(app, s);
-    fprintf(app.log, "t=%.1f fps=%d work_ms=%.2f visible=%d covered=%d particles=%zu active=%zu snow=%zu windows=%zu icons=%zu cursor(%.0f,%.0f idle=%.1f cap=%d)\n",
+    fprintf(app.log, "t=%.1f fps=%d work_ms=%.2f visible=%d covered=%d particles=%zu active=%zu snow=%zu windows=%zu icons=%zu cursor(%.0f,%.0f idle=%.1f cap=%d over=%d)\n",
         t, frames, workSeconds / frames * 1000, int(s.surface.shown), int(s.covered),
         w.particleCount(), w.activeCount(), w.countSnow(), app.windows.size(), app.icons ? app.icons->size() : 0,
-        app.cursor.x, app.cursor.y, app.cursor.idle, app.cursor.snowCount);
+        app.cursor.x, app.cursor.y, app.cursor.idle, app.cursor.snowCount, int(app.cursor.overWindow));
     fprintf(app.log, "  kids=%zu snowmen=%zu spot=%.0f thrown=%d hits=%d hiddenSnow=%zu\n", s.playground.kidCount(), s.playground.snowmanCount(),
         s.playground.sceneSpot(), s.playground.ballsThrown(), s.playground.ballsLanded(), w.countHiddenSnow());
     fprintf(app.log, "  scene=%d onWindow=%d onIcons=%d hops=%d heaps=%d soft=%d hard=%d\n", int(s.playground.currentScene()), int(s.playground.playingOnWindow()),

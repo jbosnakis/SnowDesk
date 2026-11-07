@@ -110,6 +110,7 @@ public:
     int gridH() const { return gh; }
     const uint8_t* visibleCells() const { return vis.data(); }
     const uint8_t* solidCells() const { return solid.data(); }
+    bool windowAt(float x, float y) const;    // is this pixel inside a window
     const uint8_t* occluderCells() const { return occluder.data(); }
     void takeDirty(std::vector<CellBox>& boxes);
     bool consumeOccluderDirty();
@@ -153,7 +154,6 @@ private:
     float rndf(float a, float b) { return a + (b - a) * rndf(); }
 
     bool isOpen(int i, bool insideWindow) const { return !snow[i] && !solid[i] && (insideWindow || !window[i]); }
-    bool windowAt(float x, float y) const;
     bool guarded(int x, int y) const;
     float pileLimit(uint8_t kind, int x, int y) const;
     float stickRate(uint8_t base, bool onSnow, int x) const;
